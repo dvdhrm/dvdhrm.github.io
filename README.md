@@ -1,8 +1,10 @@
-dvdhrm/websites - Personal Website
-==================================
+dvdhrm.github.io
+================
 
-This contains the sources of my personal website. Feel free to copy anything
-you see!
+Sources of my personal Github-Pages.
+
+This contains the sources of my personal github-pages. Feel free to copy
+anything you see!
 
 ### Project
 
@@ -17,10 +19,10 @@ The requirements for this project are:
 
 ### Build
 
-To build the jekyll pages, run:
+To build this project, run:
 
-```
-    $ jekyll build
+```sh
+jekyll build
 ```
 
 ### Repository:
