@@ -97,13 +97,13 @@ Voilà! No need for *GNU-EFI*, no need to mess with separated toolchains. With
 *LLVM* you get all this through your local toolchain.
 
 If you use *Meson Build*, the
-[**c-efi**](https://c-util.github.io/c-efi) project even provides you an
+[**c-efi**](https://github.com/c-util/c-efi) project even provides you an
 example *cross-file*. A native meson C project can then be compiled for UEFI by
 nothing more than passing `--cross-file x86_64-unknown-uefi` to `meson`. See
 its
 [sources](https://github.com/c-util/c-efi/blob/master/src/x86_64-unknown-uefi.mesoncross.ini)
 for details.
 
-The [**c-efi**](https://c-util.github.io/c-efi) project also provides the
+The [**c-efi**](https://github.com/c-util/c-efi) project also provides the
 protocol contants and definitions from the UEFI specification, so you don't
 have to extract them yourself.
