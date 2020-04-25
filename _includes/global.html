@@ -1,0 +1,2 @@
+{%- assign global_posts = site.posts | where_exp: "post", "post.hidden != true" -%}
+{%- assign global_posts_fedora = global_posts | where_exp: "post", "post.categories contains 'fedora'" -%}

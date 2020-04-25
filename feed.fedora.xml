@@ -1,8 +1,9 @@
 ---
 layout: feed
 ---
-{% assign posts = site.categories.fedora | where_exp: "post", "post.hidden != true" %}
-{% for post in posts limit: 1024 %}
+{%- include global.html -%}
+
+{% for post in global_posts_fedora limit: 1024 %}
 <entry>
   <title>{{ post.caption | xml_escape }}</title>
   <id>{{ post.id | absolute_url | xml_escape }}</id>

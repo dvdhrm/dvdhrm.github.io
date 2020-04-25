@@ -1,7 +1,8 @@
 ---
 ---
-{% assign posts = site.posts | where_exp: "post", "post.hidden != true" %}
-{% for post in posts %}
+{%- include global.html -%}
+
+{% for post in global_posts %}
 <article class="tj">
   <h1><a href="{{ post.url | relative_url }}">{{ post.caption }}</a></h1>
   <section>
