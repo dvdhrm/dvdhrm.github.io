@@ -1,6 +1,6 @@
 ---
 layout: post
-name: Rethinking the D-Bus Message Bus
+caption: Rethinking the D-Bus Message Bus
 categories: [fedora]
 tags: [dbus, fedora, bus1, dbus-broker, dbus-daemon]
 permalink: /:title/

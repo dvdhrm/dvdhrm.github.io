@@ -1,6 +1,6 @@
 ---
 layout: post
-name: Goodbye Gnu-EFI!
+caption: Goodbye Gnu-EFI!
 categories: [fedora]
 tags: [efi, uefi, boot, gnu, gnuefi, gnu-efi]
 ---

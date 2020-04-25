@@ -1,6 +1,6 @@
 ---
 layout: post
-name: Cross-Bootstrap Fedora
+caption: Cross-Bootstrap Fedora
 categories: [fedora]
 tags: [fedora, dnf, installroot, bootstrap, qemu, forcearch]
 ---

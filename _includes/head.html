@@ -4,11 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property='og:type' content='article' />
 
-{% if page.name %}
-    <title>{{ page.name }}</title>
-    <meta name="title" content="{{ page.name }}" />
-    <meta name="DCTERMS.title" content="{{ page.name }}" />
-    <meta property="og:title" content="{{ page.name }}" />
+{% if page.caption %}
+    <title>{{ page.caption }}</title>
+    <meta name="title" content="{{ page.caption }}" />
+    <meta name="DCTERMS.title" content="{{ page.caption }}" />
+    <meta property="og:title" content="{{ page.caption }}" />
 {% else %}
     <title>{{ site.name }} – {{ site.description }}</title>
     <meta name="title" content="{{ site.name }} – {{ site.description }}" />
