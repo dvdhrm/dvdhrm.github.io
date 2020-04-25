@@ -17,10 +17,7 @@ media:
   rss: "feed.xml"
   twitter: "dvdhrm"
 
-#
-# Remaining Setup
-#
-
+# Define default layouts for each page type
 defaults:
   - scope:
       path: ""
@@ -34,5 +31,10 @@ defaults:
       layout: "post"
       permalink: "/:year/:month/:day/:title/"
 
+#
+# External plugins:
+#  - jekyll-sitemap: This creates a sitemap.xml for us, allowing easier
+#                    indexing of the entire website.
+#
 plugins:
   - jekyll-sitemap
