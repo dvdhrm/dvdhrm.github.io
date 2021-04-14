@@ -15,7 +15,6 @@ media:
   email: "david.rheinsberg@gmail.com"
   github: "dvdhrm"
   rss: "feed.xml"
-  twitter: "dvdhrm"
 
 # Define default layouts for each page type
 defaults:
