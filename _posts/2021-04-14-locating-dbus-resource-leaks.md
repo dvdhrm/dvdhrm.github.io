@@ -3,7 +3,6 @@ layout: post
 caption: Locating D-Bus Resource Leaks
 categories: [fedora]
 tags: [dbus, dbus-broker, quota, resource, leak, accounting]
-hidden: true
 ---
 
 With _dbus-broker_ we have introduced the resource-accounting of _bus1_
