@@ -6,14 +6,14 @@ tags: [dbus, dbus-broker, quota, resource, leak, accounting]
 hidden: true
 ---
 
-With _dbus-broker_ we have introduced the resource-accounting from the _bus1_
-technology into the D-Bus world. We believe it greatly improves and strengthens
+With _dbus-broker_ we have introduced the resource-accounting of _bus1_
+into the D-Bus world. We believe it greatly improves and strengthens
 the resource distribution of the D-Bus messages bus, and we have already found
 a handful of resource leaks that way. However, it can be a daunting task to
 solve resource exhaustion bugs, so I decided to describe the steps we took to
 resolve a recent resource-leak in the openQA package.
 
-A few days ago, Adam Williamson approached me [1] with a bug in the openQA
+A few days ago, Adam Williamson approached me [^1] with a bug in the openQA
 package, where he saw the log stream filled with messages like:
 
     dbus-broker[<pid>]: Peer :1.<id> is being disconnected as it does not have the resources to receive a reply or unicast signal it expects.
@@ -31,7 +31,7 @@ same resource limits.
 
 Depending on what message is sent, it is accounted either on the receiver or
 sender. Furthermore, some messages can be refused by the broker, others
-cannot. The exact rules are described in the wiki [2].
+cannot. The exact rules are described in the wiki [^2].
 
 In the case of openQA, the first step was to query the accounting information
 of the running message broker:
@@ -44,7 +44,7 @@ While preferably this query is performed when the resource exhaustion happens,
 it will often yield useful information under normal operation as well.
 Resources are often consumed slowly, so the accumulation will still show up.
 
-The output [3] of this query shows a list of all D-Bus clients with their
+The output [^3] of this query shows a list of all D-Bus clients with their
 accounting information. Furthermore, it lists all UIDs that have clients
 connected to this message bus, again with all accounting information. The
 challenge is to find suspicious entries in this huge data dump. The most
@@ -103,7 +103,7 @@ We digged further, and the data dump includes more such clients. Matching back
 the PIDs to processes via `ps auxf`, we found that each and every of those
 suspicious entries was `/usr/bin/isotovideo: backend`. The code of this process
 is part of the `os-autoinst` repository, in this case `qemu.pm`. A quick look
-showed only a single use of D-Bus [4]. At a first glance, this looks alright.
+showed only a single use of D-Bus [^4]. At a first glance, this looks alright.
 It creates a system-bus connection via the _Net::DBus_ perl module, dispatches
 a method-call, and returns the result. However, we know this process has a
 match-rule installed (assuming the dbus-broker logs are correct), so we checked
@@ -116,14 +116,14 @@ which was idle in the background and never dispatched by any code. However, the
 connection has a match-rule installed, and the message broker kept sending
 matching signals to that connection. This data accumulated and eventually
 exceeded the resource quota of that client. A workaround was quickly provided,
-and it will hopefully resolve this problem [5].
+and it will hopefully resolve this problem [^5].
 
 Hopefully, this short recap will be helpful to debug other similar situations.
 You are always welcome to message us on _bus1-devel@googlegroups_ or on the
 dbus-broker GitHub issue tracker if you need help.
 
-[1] https://progress.opensuse.org/issues/90872
-[2] https://github.com/bus1/dbus-broker/wiki/Accounting
-[3] https://progress.opensuse.org/attachments/11201/dbusdebug.txt
-[4] https://github.com/os-autoinst/os-autoinst/blob/965960f534c93ef12f0978014d589b8b2be6e6d2/backend/qemu.pm#L138
-[5] https://github.com/os-autoinst/os-autoinst/pull/1641
+[^1]: https://progress.opensuse.org/issues/90872
+[^2]: https://github.com/bus1/dbus-broker/wiki/Accounting
+[^3]: https://progress.opensuse.org/attachments/11201/dbusdebug.txt
+[^4]: https://github.com/os-autoinst/os-autoinst/blob/965960f534c93ef12f0978014d589b8b2be6e6d2/backend/qemu.pm#L138
+[^5]: https://github.com/os-autoinst/os-autoinst/pull/1641
