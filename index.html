@@ -8,6 +8,9 @@
   <section>
 {{ post.excerpt }}
   </section>
-  <a href="{{ post.url | relative_url }}">Read More</a>
+  <section class="i gray pl3">
+    <a href="{{ post.url | relative_url }}">(Read More)</a>
+    — Written by {{ site.author }}, on {{ post.date | date: "%B %e, %Y" }}.
+  </section>
 </article>
 {% endfor %}
