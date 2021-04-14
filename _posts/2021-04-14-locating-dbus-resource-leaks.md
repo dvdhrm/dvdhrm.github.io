@@ -61,7 +61,7 @@ In this case, we checked for `"OutgoingBytes"`, and found:
         uint32 62173024
     )
 
-62 MiB of messages is waiting to be delivered to that client. Expanding the
+62 MiB of messages are waiting to be delivered to that client. Expanding the
 logs to show the surrounding block, we see:
 
     struct {
@@ -122,8 +122,8 @@ Hopefully, this short recap will be helpful to debug other similar situations.
 You are always welcome to message us on _bus1-devel@googlegroups_ or on the
 dbus-broker GitHub issue tracker if you need help.
 
-[^1]: https://progress.opensuse.org/issues/90872
-[^2]: https://github.com/bus1/dbus-broker/wiki/Accounting
-[^3]: https://progress.opensuse.org/attachments/11201/dbusdebug.txt
-[^4]: https://github.com/os-autoinst/os-autoinst/blob/965960f534c93ef12f0978014d589b8b2be6e6d2/backend/qemu.pm#L138
-[^5]: https://github.com/os-autoinst/os-autoinst/pull/1641
+[^1]: [OpenSUSE Bug #90872](https://progress.opensuse.org/issues/90872)
+[^2]: [D-Bus Broker Accounting](https://github.com/bus1/dbus-broker/wiki/Accounting)
+[^3]: [OpenSUSE Bug Attachment](https://progress.opensuse.org/attachments/11201/dbusdebug.txt)
+[^4]: [os-autoinst qemu.pm](https://github.com/os-autoinst/os-autoinst/blob/965960f534c93ef12f0978014d589b8b2be6e6d2/backend/qemu.pm#L138)
+[^5]: [os-autoinst PR #1641](https://github.com/os-autoinst/os-autoinst/pull/1641)
