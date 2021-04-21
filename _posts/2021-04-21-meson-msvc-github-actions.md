@@ -3,7 +3,6 @@ layout: post
 caption: Meson with MSVC on GitHub Actions
 categories: [fedora]
 tags: [actions, github, meson, microsoft, msvc, visual studio]
-hidden: true
 ---
 
 The Meson Build System provides support for running on Microsoft Windows,
@@ -40,8 +39,8 @@ simply invoke it to find a suitable _MSVC_ install. From there on, we look for
 `DevShell.dll`, which provides the required integration. We load it into
 PowerShell and invoke the provided `Enter-VsDevShell` function. By comparing
 our own environment variables before and after that call, we can extract the
-changes and export them into the _GitHub Actions_ environment. This way,
-following steps will have access to those variables as well.
+changes and export them into the _GitHub Actions_ environment. Thus,
+the following workflow-steps will have access to those variables as well.
 
 I plugged this into a re-usable _GitHub Action_ using the new _composite_ type.
 To use it in a _GitHub Actions_ workflow, simply use:
@@ -62,6 +61,13 @@ If you rather import the code into your own project, you can find it on
 [GitHub](https://github.com/bus1/cabuild/blob/8c91ebf06b7a5f8405cf93c89a6928e4c76967e0/action/msdevshell/action.yml).
 Note that this uses PowerShell syntax, so it might look alien to linux
 developers.
+
+While this is only roughly 50 lines of PowerShell scripting, it still feels a
+bit too hacky. The _Meson_ developers are aware of this, but so far no patches
+have found their way upstream. Lets hope that this workaround will one day be
+obsolete and _Meson_ invokes _vswhere_ itself.
+
+---
 
 Following a full example workflow:
 
