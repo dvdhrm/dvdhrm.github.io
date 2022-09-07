@@ -3,7 +3,6 @@ layout: post
 caption: Towards Stable Rust UEFI Firmware
 categories: [fedora]
 tags: [efi, firmware, rust, stable, tier-2, tier-3, uefi]
-hidden: true
 ---
 While _Tianocore EDKII_ still dominates the UEFI development world, there has
 been continuous effort to enable Rust for firmware development. But so far the
