@@ -71,7 +71,8 @@ obsolete and _Meson_ invokes _vswhere_ itself.
 
 Following a full example workflow:
 
-```yml
+{% highlight yml %}
+{% raw %}
 name: Continuous Integration
 
 on: [push, pull_request]
@@ -103,4 +104,5 @@ jobs:
       run: meson compile -v -C build
     - name: Run Test Suite
       run: meson test -v -C build
-```
+{% endraw %}
+{% endhighlight %}
